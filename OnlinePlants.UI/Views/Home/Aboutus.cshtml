@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Aboutus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyBOyvtTCDI7DYRBW_0z1BVhwx4cUIHrUaI"></script>
+
+
+<div id="titlebar" class="single">
+    <div class="container">
+
+        <div class="sixteen columns">
+            <h2>About Us</h2>
+            <nav id="breadcrumbs">
+            </nav>
+        </div>
+
+    </div>
+</div>
+
+<!-- Container -->
+<div class="container">
+    <div class="sixteen columns">
+
+        <h3 class="margin-bottom-20">Services</h3>
+
+        <!-- Google Maps -->
+        <section class="google-map-container">
+            OnlinePlants Recruitment Services LLC © Our
+            firm has been recognized Globally, for our Professional
+            Career Recruiting & Consulting
+            <br /><br />
+            We provide Career Seekers, Outstanding Opportunities Globally, and assist them to reach their Highest Level of Potential. We assist Companies of all sizes find Top Talent, with our proven ability to implement Fast, Efficient, Hiring procedures. We take pride in our work, and are strongly passionate about delivering what is best for every need. We work tirelessly to reach our goals, and welook forward to becoming your #1 career opportunity website!
+        </section>
+        <!-- Google Maps / End -->
+
+    </div>
+    <div class="sixteen columns">
+
+        <h3 class="margin-bottom-20">Our Office</h3>
+
+        <!-- Google Maps -->
+        <section class="google-map-container">
+            <div id="googlemaps" class="google-map google-map-full"></div>
+        </section>
+        <!-- Google Maps / End -->
+
+    </div>
+
+    <div class="sixteen columns">
+
+        
+
+        <!-- Google Maps -->
+        <section class="google-map-container">
+            Front Screen Global Recognition: Instead of "We help people all over the world get hired & the photo; we can add "We help people globally", under the OnlinePlants Logo on the Home Page. We are a Global Company, so we need to recognize that way;
+        </section>
+        <!-- Google Maps / End -->
+
+    </div>
+</div>
+<!-- Container / End -->
+
+<script src="~/JS/angular.min.js"></script>
+<script src="~/JS/Account.js"></script>
+
+
+
+
+<script src="~/scripts/jquery-2.1.3.min.js"></script>
+<script src="~/scripts/jquery.gmaps.min.js"></script>
+
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+
+            $('#googlemaps').gMap({
+                maptype: 'ROADMAP',
+                scrollwheel: false,
+                zoom: 13,
+                markers: [
+					{
+					    address: 'Houston, TX 77036', // Your Adress Here
+					    html: '<strong>Our Office</strong><br>49800 Center Parkway, Suite 650 </br>Houston, TX 77036',
+					    popup: true,
+					}
+                ],
+            });
+
+        });
+
+    })(this.jQuery);
+</script>
+
+
+
+
+@section script
+{
+    <script>
+
+        $(document).ready(function () {
+            $('.tabAboutus').attr('id', 'current');
+        });
+
+    </script>
+}
+
+

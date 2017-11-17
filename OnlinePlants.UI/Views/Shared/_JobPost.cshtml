@@ -1,0 +1,187 @@
+﻿
+
+<div class="control" style="background-color:#58BA2B; text-align:center; color:#fff;" id="lblPostedJob">
+    The job has been successfully posted
+</div>
+
+<div class="my-account" style="width:0 !important; text-align:center; ">
+
+    <div class="Steps"> {{StepNo}}  </div>
+    <div class="Step-text ">
+        Step
+    </div>
+
+    <ul class="tabs-nav" style="display:none;">
+        <li><a href="#tab1" data-toggle="tab" ng-click="fn_JobTabSelection(1)">Step 1</a></li>
+        <li><a href="#tab2" ng-click="fn_JobTabSelection(2)">Step 2</a></li>
+        <li><a href="#tab3" ng-click="fn_JobTabSelection(3)">Step 3</a></li>
+        <li><a href="#tab4" ng-click="fn_JobTabSelection(4)">Step 4</a></li>
+        <li><a href="#tab5" ng-click="fn_JobTabSelection(5)">Step 5</a></li>
+    </ul>
+</div>
+
+<div class="tabs-container ">
+    <div class="tab-content" id="tab1" style="display: none;">
+        <div class="sixteen columns">
+            <div class="submit-page">
+                <div class="form">
+
+                    @if (ViewBag.UserTypeId == 4)
+                    {
+                        <h5 style="display:inline-block; padding-right:5em">Add Job For</h5>
+                        <input type="checkbox" id="checkForrec" ng-model="checkForrec" ng-true-value="1" ng-false-value="0" ng-change="fn_RecruiterJob()" /><span>Recruiter Job</span>
+                        @*<span>&nbsp; &nbsp; &nbsp; &nbsp;</span>
+                            <input type="checkbox" id="checkforsplit" ng-model="checkforsplit" ng-true-value="1" ng-false-value="0" ng-change="fn_SplitJob()" /><span>Split Job</span>*@
+
+
+                    }
+
+                    @if (ViewBag.UserTypeId == 3)
+                    {
+                        <input type="checkbox" id="checkforsplit" ng-model="checkforsplit" ng-true-value="1" ng-false-value="0" ng-change="fn_SplitJob()"  ng-checked="1" /><span>Split JOB</span>
+
+                    }
+
+
+
+                    <br />
+                    <br />
+                    <h5>Select Company</h5>
+                    <select placeholder="Choose Category" ng-options="o.Name for o in CompanyList track by o.CompID" ng-model="CompID" id="cmd_CompID" style="height:50px;" required>
+                        <option value="">Select Company</option>
+                    </select>
+                    <span class="required">{{lblCompany}} </span>
+
+
+
+                </div>
+            </div>
+
+        </div>
+        <span class="clearfix"></span>
+    </div>
+    <div class="tab-content" id="tab2" style="display: none;">
+        <div class="sixteen columns">
+            <div class="submit-page">
+                <div class="form">
+                    <h5>Job Title</h5>
+                    <input class="search-field" type="text" placeholder="Job Title" value="" ng-model="Title" required />
+                    <span class="required">{{lblCompany}} </span>
+
+                    <h5>No. of Days Job open</h5>
+
+                    <select placeholder="Select Days" ng-options="o.JDDays for o in JobdaysList track by o.JDID" ng-model="Jobdays" id="cmb_Jobdays" style="height:50px;">
+                        <option value="">Select Days</option>
+                    </select>
+                    <span class="required">{{lblDays}} </span>
+                </div>
+            </div>
+        </div>
+        <span class="clearfix"></span>
+    </div>
+    <div class="tab-content" id="tab3" style="display: none;">
+        <div class="sixteen columns">
+            <div class="submit-page">
+                <div class="form">
+                    <h5>Select Country</h5>
+                    <select placeholder="Choose Category" ng-options="o.Name for o in LocationList track by o.JobLocationID" ng-model="JobLocationID" id="cmb_Categories" style="height:50px;" ng-change="fn_CountrySelection()">
+                        <option value="">Select Country</option>
+                    </select>
+                    <span class="required">{{lblLocation}} </span>
+
+                    <div id="divState">
+                        <h5>State</h5>
+                        <select placeholder="Choose Category" ng-options="o.StateName for o in StateList track by o.StateID" ng-model="State" id="cmb_States" style="height:50px;">
+                            <option value="">Select State</option>
+                        </select>
+                        <span class="required">{{lblState}} </span>
+                    </div>
+                    <div id="divCity">
+                        <h5>City</h5>
+                        <input class="search-field" type="text" placeholder="Enter city name" value="" ng-model="CityName" />
+                        <span class="required">{{lblCity}} </span>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <span class="clearfix"></span>
+    </div>
+    <div class="tab-content" id="tab4" style="display: none;">
+        <div class="sixteen columns">
+            <div class="submit-page">
+                <div class="form">
+                    <h5>Job Type</h5>
+                    <select placeholder="Choose Category" ng-options="o.Name for o in JobTypeList track by o.JobTypeID" ng-model="JobTypeID" id="cmb_Categories" style="height:50px;">
+                        <option value="">Select Job Type</option>
+                    </select>
+                    <span class="required">{{lblJobtype}} </span>
+                </div>
+                <div class="form">
+                    <h5>Salary</h5>
+                    <input class="search-field" type="number" placeholder="Salary" value="" ng-model="Salary" maxlength="8" />
+                    <span class="required">{{lblSalary}} </span>
+                </div>
+                <div class="form">
+                    <h5>Salary Type</h5>
+                    <select placeholder="Select Salary Type" ng-options="o.SalaryName for o in SalaryTypeList track by o.SalaryCode" ng-model="SalaryType" id="cmb_Categories" style="height:50px;">
+                        <option value="">Select Salary Type</option>
+                    </select>
+                    <span class="required">{{lblSalaryType}} </span>
+                </div>
+            </div>
+        </div>
+        <span class="clearfix"></span>
+    </div>
+    <div class="tab-content" id="tab5" style="display: none;">
+        <div class="sixteen columns">
+            <div class="submit-page">
+
+
+                <div class="form">
+                    <h5>Job Description</h5>
+                    <textarea class="WYSIWYG" name="summary" cols="40" rows="3" id="summary" spellcheck="true" ng-model="Description"></textarea>
+                    <input type="hidden" id="hdfDes" name="hdfDes" />
+                    <span class="required">{{lblDescription}} </span>
+                    @*<textarea name="summary" cols="40" rows="10" id="summary" ng-model="Description" spellcheck="true"></textarea>*@
+
+                </div>
+                <div class="form">
+                    <span id="message" style="color:{{color}}">{{message}}</span>
+                </div>
+
+                <div class="divider margin-top-0"></div>
+                @*<a style="cursor:pointer;" class="button big margin-top-5" ng-click="fn_AddUpdateJob(2)">Save <i class="fa fa-arrow-circle-right"></i></a>
+                    <a style="cursor:pointer;" class="button big margin-top-5" ng-click="fn_AddUpdateJob(3)">Archive <i class="fa fa-arrow-circle-right"></i></a>*@
+                @*<a style="cursor:pointer;" class="button big margin-top-5" id="cmd_Submit" ng-click="fn_Preview()">Preview</a>*@
+                @*<a style="cursor:pointer;" class="button big margin-top-5" ng-click="Valid.onSubmit($event)" id="cmd_Submit">Submit <i class="fa fa-arrow-circle-right"></i></a>*@
+            </div>
+        </div>
+        <span class="clearfix"></span>
+    </div>
+
+</div>
+
+<div class="pagination-container" style="padding-top:1em;">
+    <nav class="pagination">
+        @*<ul>
+                <li>Step</li>
+                <li>{{StepNo}}</li>
+            </ul>*@
+    </nav>
+    <div class="sixteen columns">
+        <div class="submit-page">
+            <nav class="pagination-next-prev">
+                <ul>
+                    <li><a style="cursor:pointer;" ng-click="fn_PreviousSection()" class="prev">Previous</a></li>
+                    <li><a style="cursor:pointer;" class="next" ng-click="fn_NextSection()" id="cmd_next">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+</div>

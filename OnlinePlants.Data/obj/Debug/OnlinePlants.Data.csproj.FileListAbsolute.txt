@@ -1,0 +1,14 @@
+E:\My Projects\OnlinePlants\OnlinePlants.Data\bin\Debug\OnlinePlants.Data.dll.config
+E:\My Projects\OnlinePlants\OnlinePlants.Data\bin\Debug\OnlinePlants.Data.dll
+E:\My Projects\OnlinePlants\OnlinePlants.Data\bin\Debug\OnlinePlants.Data.pdb
+E:\My Projects\OnlinePlants\OnlinePlants.Data\bin\Debug\EntityFramework.dll
+E:\My Projects\OnlinePlants\OnlinePlants.Data\bin\Debug\EntityFramework.SqlServer.dll
+E:\My Projects\OnlinePlants\OnlinePlants.Data\bin\Debug\OnlinePlants.Model.dll
+E:\My Projects\OnlinePlants\OnlinePlants.Data\bin\Debug\OnlinePlants.Model.pdb
+E:\My Projects\OnlinePlants\OnlinePlants.Data\bin\Debug\EntityFramework.xml
+E:\My Projects\OnlinePlants\OnlinePlants.Data\bin\Debug\EntityFramework.SqlServer.xml
+E:\My Projects\OnlinePlants\OnlinePlants.Data\obj\Debug\OnlinePlants.Data.csprojResolveAssemblyReference.cache
+E:\My Projects\OnlinePlants\OnlinePlants.Data\obj\Debug\OnlinePlants.Data.Migrations.datanew.resources
+E:\My Projects\OnlinePlants\OnlinePlants.Data\obj\Debug\OnlinePlants.Data.csproj.GenerateResource.Cache
+E:\My Projects\OnlinePlants\OnlinePlants.Data\obj\Debug\OnlinePlants.Data.dll
+E:\My Projects\OnlinePlants\OnlinePlants.Data\obj\Debug\OnlinePlants.Data.pdb

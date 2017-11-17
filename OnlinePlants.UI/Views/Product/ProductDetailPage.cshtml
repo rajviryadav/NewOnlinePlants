@@ -1,0 +1,335 @@
+﻿@model OnlinePlants.UI.Models.ProductDetailModel
+@{
+    ViewBag.Title = "Product Detail Page";
+    int i = 1;
+    Layout = "~/Views/Shared/_LayoutInner.cshtml";
+}
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<div class="gardening-mini-banner" style="background-image: url(/Content/Images/landscape-design-banner-img.jpg);background-repeat: no-repeat;">
+    <div class="slide-item-table">
+        <div class="slide-item-tablecell">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="top-in-head"> <h1>Product Info</h1></div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="gardening-breadcumb">
+                            <ul><li><a href="/">Home</a></li><li>Product</li></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End Banner Area -->
+
+<input type="hidden" id="ProductID" name="ProductID" value="@Model.ProductId" />
+<input type="hidden" id="Price" name="Price" value="@Model.Price" />
+<input type="hidden" id="ShippingCharge" name="ShippingCharge" value="@Model.ShippingCharge" />
+<input type="hidden" id="CategoryID" name="CategoryID" value="@Model.CategoryId" />
+
+<section class="gardening-content-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-5">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="gallery-box">
+                            <a class="lightbox-gallery " href="@Model.ProductPicture">
+                                <img class="ct-product-image" src="@Model.ProductPicture" alt="Shop">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-7">
+                <div class="product-box-area">
+                    <h3 class="ct-product-title">@Model.Name</h3>
+                    <div class="product-price">
+                        <h3><i class="fa fa-rupee"></i>@Model.Price</h3>
+                    </div>
+                    <div class="product-description">
+                        <p>@Html.Raw(Model.Description)</p>
+                    </div>
+                    <div class="product-cart">
+                        <div class="quantity">
+                            <label>Quantity:</label>
+                            <div class="quantity-inner">
+                                <input step="1" min="1" name="quantity" value="1" id="Qty" title="Qty" class="input-text" size="4" max="" type="number">
+                            </div>
+                            &nbsp;   &nbsp;   &nbsp;                            
+                                <a id="btnAddToBuggy" href="javascript:void(0)" onclick="return AddToCart()" class="btn ct-product-button">Add to Buggy</a>
+                           
+                        </div>
+                    </div>
+                    <div class="wishlist-wrap">
+                        <a href="javascript:void(0)" onclick="return AddToWishList()" class="product-wrap-btn"><span><i class="ion-ios-heart-outline"></i></span> Add to wishlist</a>
+                    </div>
+                    <div class="product-details">
+                        <div class="item-wrapper">
+                            <label>SKU:</label> <span>@Model.Sku </span>
+                        </div>
+                        <div class="item-wrapper">
+                            <label>Availability</label> <span> @Model.Quantity</span>
+                        </div>                        
+                        @if (Model.ShippingCharge > 0)
+                        {
+                            <h6 class="freeshipping">Shipping Charges: <span>Rs. @Model.ShippingCharge/-</span></h6>
+                        }
+                        else
+                        {
+                            <h6 class="freeshipping">Shipping Charges: <span>Free</span></h6>
+                        }
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12 pincode">
+                                <div class="pincode-check-group">
+                                    <input name="search_param" value="all" id="search_param" type="hidden">
+                                    <input class="form-control" name="x" required placeholder="Check COD" id="txtPincode" onkeypress="return isNumber(event)" maxlength="6">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-codcheck" type="button" onclick="checkCodAvailable();">Check</button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="ask-question-btn">
+                                    <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" onclick="return resetQuery();">
+                                        <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
+                                        <span>Ask a query</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 append-html" style="display:none">
+                                <div class="ship-del-text">
+                                    <p class="change-codavailable"></p>
+                                    <p class="cod-chk-msg" id="divCODAvailable"></p>
+                                    <p class="cod-msg" id="divCODAvailablemsg"></p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-lg-12">
+                                <div class="outerdelivery">
+                                    <p>
+                                        (Normally delivered in 3 - 5 business days)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-share-area">
+                        <ul class="list-inline">
+                            <li><i class="ion-android-share-alt"></i> Share:</li>
+                            <li>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=@HttpContext.Current.Request.Url&t=@Model.ProductName"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank" title="Share on Facebook">
+                                    <i class="ion-social-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/share?url=URLENCODED_URL&via=@HttpContext.Current.Request.Url&text=@Model.ProductName"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank" title="Share on Twitter">
+                                    <i class="ion-social-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://plus.google.com/share?url=@HttpContext.Current.Request.Url"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=480');return false;"
+                                   target="_blank" title="Share on Google+">
+                                    <i class="ion-social-googleplus"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="space-45"></div>
+
+        <div class="product-details-area">
+            <div class="row">
+                <div class="col-xs-2">
+                    <!-- required for floating -->
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs tabs-left">
+                        <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+                        <li><a href="#information" data-toggle="tab">Information</a></li>
+                        <li><a href="#reviews" data-toggle="tab">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="description">
+                            <h3>Description</h3>
+                            <p>@Model.Description</p>
+
+
+                        </div>
+                        <div class="tab-pane" id="information">
+                            <h3>Information</h3>
+                            <div class="product-details">
+                                <div class="item-wrapper">
+                                    <label>Size</label> <span>@Model.Size</span>
+                                </div>
+                                <div class="item-wrapper">
+                                    <label>Weight</label> <span>@Model.Weight</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="reviews">
+                            <div class="product-reviews">
+                                <div class="review-form">
+                                    <article class="review-section vtabreviews" id="reviews">
+                                        <div class="row">
+                                            @Html.Action("_ProductReview", "Product", new { ProductID = Model.ProductId })
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade refer-friend-m ask-query-popup" id="ask-query-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-dropdown-in="flipInY" data-dropdown-out="flipOutY">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="top-logo-text">
+                    <h3>Ask a query?</h3>
+                </div>
+                <section class="share-refer-sec">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-12 col-lg-12">
+                            <div class="r-share-bx">
+                                <strong>Enter your query</strong>
+                                <span>Enter up 500 words.</span>
+                                <div class="input-field">
+                                    <textarea id="AskQuery" class="form-control" maxlength="500" required></textarea>
+                                </div>
+                                <button onclick="return SubmitQuery();" class="btn btn-default" type="button">Submit</button>
+                                <button id="CloseQuery" data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function resetQuery() {
+        var UserID = $("#UserID").val();
+        if (UserID != "") {
+
+            $("#AskQuery").val('');
+            $("#AskQuery").css('border', '1px solid #e5e5e5');
+            $('#ask-query-popup').modal('toggle');
+        }
+        else {
+
+            Alert1("Login required for ask queries.");
+            setTimeout(function () {
+                $('.login').modal('toggle');
+                $('.login').modal('show');
+            }, 500);
+        }
+
+    }
+    function checkCodAvailable() {
+        $("#divCODAvailable").show();
+        var pinCode = $("#txtPincode").val();
+        if (pinCode) {
+            var url = '@Url.Action("CheckCodAvailable", "Product")';
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: url,
+                data: { pincode: pinCode },
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    if (!result) {
+                        $("#txtPincode").val('');
+                        $(".pincode").css('display', 'none');
+                        $(".change-codavailable").html("Your PIN : " + pinCode + " | <a id='change-pincode' onclick='ChangePinCode();'>Change Here</a> ")
+                        $(".outerdelivery").css('display', 'none');
+                        $(".cod-chk-msg").html(" <i class='zmdi zmdi-xbox' style=color:red !important></i> Cash on delivery is not available.");
+                        $("#divCODAvailablemsg").hide();
+                        $(".append-html").css('display', 'block');
+                    }
+                    else {
+
+
+                        $("#txtPincode").val('');
+                        $(".pincode").css('display', 'none');
+                        $(".change-codavailable").html("Your PIN : " + pinCode + " | <a id='change-pincode' onclick='ChangePinCode();'>Change Here</a> ")
+                        $(".outerdelivery").css('display', 'none');
+                        $(".cod-chk-msg").html("<i class='zmdi zmdi-check-circle' style=color:green !important></i> Cash on delivery is available.");
+                        $("#divCODAvailablemsg").hide();
+                        $(".append-html").css('display', 'block');
+                    }
+                },
+                error: function (result) {
+                    $(".cod-chk-msg").html("Failed.");
+                }
+
+            });
+        }
+        else {
+            $(".append-html").show();
+            $("#divCODAvailablemsg").show();
+            $("#divCODAvailablemsg").text("Please enter pincode to check.");
+        }
+    }
+    function ChangePinCode() {
+
+        $(".pincode").css('display', 'block');
+        $(".outerdelivery").css('display', 'block');
+        $(".append-html").css('display', 'none');
+        $("#txtPincode").focus();
+        $(".change-codavailable").html('');
+        $(".current-shipping-date").html('');
+        $(".delivered-shipping-date").html('');
+        $(".cod-chk-msg").html('');
+    }
+    function SubmitQuery() {
+        var UID = $("#UserID").val();
+        if (UID == "") {
+            Alert1("Please login to post a query.")
+            return false;
+        }
+        else {
+            var Query = $("#AskQuery").val();
+            if (Query == "") {
+                Alert1("Please enter you query.");
+                return false;
+            }
+            else {
+                $("#AskQuery").css('border', '1px solid #e5e5e5');
+                var PID = $("#ProductID").val();
+                var UID = $("#UserID").val();
+                SaveQuestion(PID, AID, UID, Query);
+                $("#AskQuery").val('');
+                $("#AskQuery").css('border', '1px solid #e5e5e5');
+                document.getElementById("CloseQuery").click();
+                return true;
+            }
+        }
+    }
+</script>

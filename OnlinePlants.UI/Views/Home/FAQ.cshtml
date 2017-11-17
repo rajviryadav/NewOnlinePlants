@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "FAQ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="single">
+    <div class="container">
+
+        <div class="sixteen columns">
+            <h2>FAQ</h2>
+            <nav id="breadcrumbs">
+            </nav>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="container">
+
+    <div class="my-account">
+
+        <ul class="tabs-nav">
+            <li><a href="#tab1" data-toggle="tab">Employer</a></li>
+            <li><a href="#tab2">Job Seeker</a></li>
+            <li><a href="#tab3">Recuritor</a></li>
+        </ul>
+
+
+    </div>
+
+    <div class="tabs-container">
+        <div class="tab-content" id="tab1" style="display: none;">
+            <div class="sixteen columns">
+                <div class="padding-right">
+                    <div class="company-info">
+                        <div class="content">
+                            <h4>Question 1</h4>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <p class="margin-reset">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                    </p>
+                </div>
+            </div>
+            <div class="sixteen columns">
+                <div class="padding-right">
+                    <div class="company-info">
+                        <div class="content">
+                            <h4>Question 2</h4>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <p class="margin-reset">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                    </p>
+                </div>
+            </div>
+            <span class="clearfix"></span>
+        </div>
+        <div class="tab-content" id="tab2" style="display: none;">
+
+            <div class="sixteen columns">
+                <div class="padding-right">
+                    <div class="company-info">
+                        <div class="content">
+                            <h4>Question 1</h4>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <p class="margin-reset">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                    </p>
+                </div>
+            </div>
+
+            <div class="sixteen columns">
+                <div class="padding-right">
+                    <div class="company-info">
+                        <div class="content">
+                            <h4>Question 2</h4>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <p class="margin-reset">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                    </p>
+                </div>
+            </div>
+            <span class="clearfix"></span>
+        </div>
+        <div class="tab-content" id="tab3" style="display: none;">
+
+            <div class="sixteen columns">
+                <div class="padding-right">
+                    <div class="company-info">
+                        <div class="content">
+                            <h4>Question 1</h4>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <p class="margin-reset">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                    </p>
+                </div>
+            </div>
+
+            <div class="sixteen columns">
+                <div class="padding-right">
+                    <div class="company-info">
+                        <div class="content">
+                            <h4>Question 2</h4>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <p class="margin-reset">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                    </p>
+                </div>
+            </div>
+            <span class="clearfix"></span>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section script
+{
+    <script src="~/scripts/custom.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('.tabfaq').attr('id', 'current');
+        });
+
+    </script>
+}

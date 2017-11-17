@@ -1,0 +1,134 @@
+﻿
+
+
+<div class="container">
+    <div class="control" style="background-color:#58BA2B; text-align:center; color:#fff;" id="#lblClosedJob" ng-show="ShowJobMessage">
+        {{TitleJobMessage}}
+    </div>
+    <!-- Recent Jobs -->
+    <div class="eleven columns">
+        <div class="padding-right">
+
+            <!-- Company Info -->
+            <div class="company-info">
+                <div class="content">
+                    <h4>{{Title}}</h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <p class="margin-reset">
+                <div id="des">
+
+                </div>
+
+            </p>
+
+        </div>
+    </div>
+
+
+    <!-- Widgets -->
+    <div class="five columns">
+
+        <!-- Sort by -->
+        <div class="widget">
+            <h4>Overview</h4>
+
+            <div class="job-overview">
+
+                <ul>
+                    <li>
+                        <i class="fa fa-map-marker"></i>
+                        <div>
+                            <strong>Country:</strong>
+                            <span>{{Location}} </span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-map-marker"></i>
+                        <div>
+                            <strong>City:</strong>
+                            <span>{{CityName}} </span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-user"></i>
+                        <div>
+                            <strong>Company Name:</strong>
+                            <span>{{CompanyName}}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-clock-o"></i>
+                        <div>
+                            <strong>Job Type:</strong>
+                            <span>{{JobTypeName}}</span>
+                        </div>
+                    </li>
+                    @*<li>
+                            <i class="fa fa-industry"></i>
+                            <div>
+                                <strong>Job Industries:</strong>
+                                <span>{{CategoryID}}</span>
+                            </div>
+                        </li>*@
+
+                    <li>
+                        <i class="fa fa-money"></i>
+                        <div>
+                            <strong>Salary:</strong>
+                            <span>{{Salary}}</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <div id="divJobAdding">
+
+                    @if (ViewBag.UserType == 1)
+                    {
+
+                        <a href="/Admin/Jobs/JobPost?Preview=Edit" style="cursor:pointer;" class="button big margin-top-5">Back to Edit <i class="fa fa-arrow-circle-right"></i></a>
+                    }
+                    else
+                    {
+                        @ViewBag.UserType
+                        <a href="/Employer/Jobs/Index?Preview=Edit" style="cursor:pointer;" class="button big margin-top-5" ng-show="IsEdit">Back to Edit <i class="fa fa-arrow-circle-right"></i></a>
+                    }
+                  
+                        <a style="cursor:pointer;" class="button big margin-top-5" ng-click="fn_SaveJob()">Save Job <i class="fa fa-arrow-circle-right"></i></a>
+                    
+                    <a id="cmd_Submit" ng-click="fn_AddUpdateJob()" style="cursor:pointer;" class="button big margin-top-5">{{submitbutton}}<i class="fa fa-arrow-circle-right"></i></a>
+                    <span id="message" style="color:{{color}}">{{message}}</span>
+                </div>
+
+
+
+
+                <div style="text-align:right;" id="divbutton">
+                    @*<a style="cursor:pointer;" class="button big margin-top-5" ng-click="DeleteJob()">Delete <i class="fa fa-arrow-circle-right"></i></a>*@
+
+                    @if (ViewBag.UserType == 1)
+                    {
+                        <a href="/Admin/Jobs/JobPost?id={{JobID}}&regid={{RegId}}" style="cursor:pointer;" class="button big margin-top-5">Edit <i class="fa fa-arrow-circle-right"></i></a>
+                    }
+                    else
+                    {
+                        <a href="/Employer/Jobs/Index?id={{JobID}}" style="cursor:pointer;" class="button big margin-top-5" ng-show="IsEditPreview">Edit <i class="fa fa-arrow-circle-right"></i></a>
+                    }
+                
+                    
+                    <a ng-click="fn_AddUpdateJob()" style="cursor:pointer;" class="button big margin-top-5" ng-show="IsSavedJob">{{submitbutton}}<i class="fa fa-arrow-circle-right"></i></a>
+                    <a style="cursor:pointer;" class="button big margin-top-5" ng-click="fn_CloseJob()" ng-show="IsClosedJob">Close Job <i class="fa fa-arrow-circle-right"></i></a>
+                    <a style="cursor:pointer;" class="button big margin-top-5" ng-click="fn_ArchiveJob()" ng-show="IsPostedJob" >Archive this Job <i class="fa fa-arrow-circle-right"></i></a>
+                    <span id="message" style="color:{{color}}" ng-show="IsSavedJob">{{message}}</span>
+                    
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

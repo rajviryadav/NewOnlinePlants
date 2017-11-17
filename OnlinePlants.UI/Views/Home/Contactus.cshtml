@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "Contactus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="http://maps.google.com/maps/api/js?sensor=true&key=AIzaSyBOyvtTCDI7DYRBW_0z1BVhwx4cUIHrUaI"></script>
+
+
+<div id="titlebar" class="single">
+    <div class="container">
+
+        <div class="sixteen columns">
+            <h2>Contact Us</h2>
+            <nav id="breadcrumbs">
+            </nav>
+        </div>
+
+    </div>
+</div>
+
+<!-- Container -->
+<div class="container">
+    <div class="sixteen columns">
+
+        <h3 class="margin-bottom-20">Our Office</h3>
+
+        <!-- Google Maps -->
+        <section class="google-map-container">
+            <div id="googlemaps" class="google-map google-map-full"></div>
+        </section>
+        <!-- Google Maps / End -->
+
+    </div>
+</div>
+<!-- Container / End -->
+
+<script src="~/JS/angular.min.js"></script>
+<script src="~/JS/Account.js"></script>
+
+
+<div class="container" ng-app="Account" ng-controller="ContactUs">
+
+    <div class="eleven columns">
+
+        <h3 class="margin-bottom-15">Contact Form</h3>
+
+        <!-- Contact Form -->
+        <section id="contact" class="padding-right">
+
+            <!-- Success Message -->
+            <mark id="message"></mark>
+
+            <!-- Form -->
+            <div name="contactform" id="contactform">
+
+                <fieldset>
+
+                    <div>
+                        <label>Name:</label>
+                        <input name="name" type="text" id="name" ng-model="Name" />
+                    </div>
+
+                    <div>
+                        <label>Email: <span>*</span></label>
+                        <input name="email" type="email" id="email" ng-model="Email" />
+                    </div>
+
+                    <div>
+                        <label>Message: <span>*</span></label>
+                        <textarea name="comment" cols="40" rows="3" id="comment" spellcheck="true" ng-model="Message"></textarea>
+                    </div>
+                    <div>
+                        <label style="color:{{color}}">{{message}}</label>
+                    </div>
+
+                </fieldset>
+                <div id="result"></div>
+                <input type="submit" class="submit" id="submit" value="Send Message" ng-click="fn_Validateform()" />
+                <div class="clearfix"></div>
+                <div class="margin-bottom-40"></div>
+            </div>
+
+        </section>
+        <!-- Contact Form / End -->
+
+    </div>
+    <!-- Container / End -->
+    <!-- Sidebar
+    ================================================== -->
+    <div class="five columns">
+
+        <!-- Information -->
+        <h3 class="margin-bottom-10">Information</h3>
+        <div class="widget-box">
+            <ul class="contact-informations">
+                <li>9800 Center Parkway,</li>
+                <li>Suite 650</li>
+                <li>Houston, TX 77036</li>
+            </ul>
+
+            <ul class="contact-informations second">
+                <li><i class="fa fa-phone"></i> <p>​B. Phone: (888) 268-6713</p></li>
+                <li><i class="fa fa-fax"></i> <p>B. Fax: (713) 965-4799</p></li>
+                
+                <li><i class="fa fa-envelope"></i> <p>recruiting@OnlinePlants.com</p></li>
+                <li><i class="fa fa-support"></i> <p>info@OnlinePlants.com</p></li>
+                
+                <li><i class="fa fa-globe"></i> <p>www.OnlinePlants.com</p></li>
+            </ul>
+
+        </div>
+
+        <!-- Social -->
+        <div class="widget margin-top-30">
+            <h3 class="margin-bottom-5">Social Media</h3>
+            <ul class="social-icons">
+                <li><a class="facebook" href="http://facebook.com/OnlinePlants" target="_blank"><i class="icon-facebook"></i></a></li>
+                <li><a class="twitter" href="http://twitter.com/OnlinePlants" target="_blank"><i class="icon-twitter"></i></a></li>
+                @*<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>*@
+                <li><a class="linkedin" href="https://www.linkedin.com/in/OnlinePlants" target="_blank" ><i class="icon-linkedin"></i></a></li>
+            </ul>
+            <div class="clearfix"></div>
+            <div class="margin-bottom-50"></div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/scripts/jquery-2.1.3.min.js"></script>
+<script src="~/scripts/jquery.gmaps.min.js"></script>
+
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+
+            $('#googlemaps').gMap({
+                maptype: 'ROADMAP',
+                scrollwheel: false,
+                zoom: 13,
+                markers: [
+					{
+					    address: 'Houston, TX 77036', // Your Adress Here
+					    html: '<strong>Our Office</strong><br>49800 Center Parkway, Suite 650 </br>Houston, TX 77036',
+					    popup: true,
+					}
+                ],
+            });
+
+        });
+
+    })(this.jQuery);
+</script>
+
+
+
+
+@section script
+{
+    <script>
+
+        $(document).ready(function () {
+            $('.tabcontactus').attr('id', 'current');
+        });
+
+    </script>
+}
+
+

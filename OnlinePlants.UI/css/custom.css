@@ -1,0 +1,40 @@
+﻿body {
+}
+
+.PP-outline {
+    border: 2px solid #58BA2B;
+}
+
+.pp-rm-hover:hover {
+    background: none !important;
+}
+
+
+
+.disable-form {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    height: 60px;
+    display: none;
+}
+
+.move-footer-bottom {
+    position: inherit;
+    bottom: 0;
+    z-index: 9999;
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 480px) {
+    .tabs-nav li {
+        width: 100%;
+    }
+}

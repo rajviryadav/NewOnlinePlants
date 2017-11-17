@@ -1,0 +1,36 @@
+﻿
+
+
+
+<div id="titlebar" class="single">
+    <div class="container">
+        <div class="sixteen columns">
+            <h2>Conversation</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container" ng-app="Messages" ng-controller="MessagesController" ng-init="fn_GetMessageThread()">
+    <div class="sixteen columns">
+        <div class="submit-page">
+            <div class="form" ng-repeat="msg in MessageThread">
+                <img src="~/images/PP/{{msg.ProfileURL}}" style="border-radius: 50%; width:50px; float:left;" />
+                <span style="font-size:0.8em;  margin-left:15px;"> <strong> {{msg.Name}}</strong>   </span>
+                <br />
+                <div style="margin-left:65px;">
+                    {{msg.MessageDetails}}
+                </div>
+            </div>
+
+            <div class="form">
+                <h5>Reply</h5>
+                <textarea class="search-field" rows="10" ng-model="Description"></textarea>
+            </div>
+            <div class="form">
+                <span style="color:{{Color}}">{{lblSendMessage}}</span>
+            </div>
+
+            <a style="cursor:pointer; float:right;" class="button big margin-top-5" ng-click="fn_SendMessage()" id="cmd_Submit">Send <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+</div>

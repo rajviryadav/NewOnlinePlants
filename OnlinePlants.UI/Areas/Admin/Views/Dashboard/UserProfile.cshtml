@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<script src="~/JS/angular.min.js"></script>
+<script src="~/JS/Common.js"></script>
+<script src="~/Areas/Admin/JS/Dashboard.js"></script>
+
+<div ng-app="Dashboard" ng-controller="DashboardCTL" ng-init="LoadProfile()">
+
+
+
+    <div id="titlebar" class="single">
+        <div class="container">
+            <div class="sixteen columns">
+                <h2>{{Name}}</h2>
+                <nav id="breadcrumbs">
+                </nav>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="container">
+
+        <div class="two columns">
+
+            <div class="form">
+                <img src="~/images/PP/{{ProfileURL}}" height="100" width="130" id="ppimage" />
+            </div>
+        </div>
+
+
+
+        <div class="twelve columns">
+            <div class="submit-page" style="padding:0 !important; ">
+
+
+                <div class="form">
+                    <h5>Full Name</h5>
+                    <input class="search-field" type="text" placeholder="" value="" ng-model="Name" readonly />
+                </div>
+
+
+                <div class="form">
+                    <h5>Your Email</h5>
+                    <input class="search-field" type="text" placeholder="mail@example.com" value="" ng-model="Email" readonly />
+                </div>
+
+
+                <div class="form">
+                    <h5>Phone Number</h5>
+                    <input class="search-field" type="text" placeholder="" value="" ng-model="Phone" readonly />
+                </div>
+
+
+
+                <div class="widget">
+                    <ul class="checkboxes">
+                        <li>
+                            <input id="check-6" type="checkbox" name="check" value="check-6" ng-model="IsProfilePrivate">
+                            <label for="check-6">Make my profile private?</label>
+                            <input id="check-7" type="checkbox" name="check" value="check-7" ng-model="IsNotificatioOn">
+                            <label for="check-7">Notify me on new application<span></span></label>
+                        </li>
+
+                        <li>
+                            <input id="check-8" type="checkbox" name="check" value="check-8" ng-model="IsEmailForwardOn">
+                            <label for="check-8">Email Forwarding</label>
+                            <input id="check-9" type="checkbox" name="check" value="check-9" ng-model="IsMessageOn">
+                            <label for="check-9">Mobile Messages</label>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@section script
+{
+    <script type="text/javascript">
+
+
+    </script>
+}

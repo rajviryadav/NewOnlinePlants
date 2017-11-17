@@ -1,0 +1,4 @@
+E:\My Projects\OnlinePlants\OnlinePlants.Model\bin\Debug\OnlinePlants.Model.dll
+E:\My Projects\OnlinePlants\OnlinePlants.Model\bin\Debug\OnlinePlants.Model.pdb
+E:\My Projects\OnlinePlants\OnlinePlants.Model\obj\Debug\OnlinePlants.Model.dll
+E:\My Projects\OnlinePlants\OnlinePlants.Model\obj\Debug\OnlinePlants.Model.pdb
